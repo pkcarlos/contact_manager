@@ -18,16 +18,16 @@ Features:
     X CANCEL returns to main page
     X OK deletes contact
 
-- Add Contact/Create Contact
-  - full name
-    - validation
-      - must contain name
-  - email address
-    - validation
-      - must be structured with "@domain.something"
-  - phone number
-    - validation
-      - must only contain numbers
+X Add Contact/Create Contact
+  X full name
+    X validation
+      X must contain name for add contact
+  X email address
+    X validation
+      X must be structured with "@domain.something" for add contact
+  X phone number
+    X validation
+      X must only contain numbers
   X submit
     X adds new contact info
     X returns user to main page

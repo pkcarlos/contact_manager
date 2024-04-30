@@ -21,24 +21,17 @@
     "tags": null
   },
   {
-    "full_name": "nikki",
-    "phone_number": "",
-    "email": "fghjk",
-    "tags": "",
-    "id": 7
-  },
-  {
-    "full_name": "CHARLIE",
-    "phone_number": "875",
+    "full_name": "Charlie C",
+    "phone_number": "123-456-3456",
     "email": "charlie@example.com",
-    "tags": "dad",
+    "tags": "Dad",
     "id": 9
   },
   {
-    "full_name": "hello kitty",
-    "phone_number": "",
+    "full_name": "Hello Kitty",
+    "phone_number": "789-456-3456",
     "email": "hello_kitty@hello.com",
-    "tags": "",
+    "tags": "friend",
     "id": 10
   },
   {
@@ -47,5 +40,19 @@
     "email": "",
     "tags": "",
     "id": 11
+  },
+  {
+    "full_name": "Nikki C",
+    "phone_number": "567-345-2345",
+    "email": "nikk@email.com",
+    "tags": "",
+    "id": 12
+  },
+  {
+    "full_name": "Hannah X",
+    "phone_number": "444-444-4444",
+    "email": "hana@example.com",
+    "tags": "",
+    "id": 13
   }
 ]

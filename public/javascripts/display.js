@@ -1,10 +1,9 @@
 export class Display {
-  constructor(apiHandler) {
+  constructor(apiHandler, validator) {
     this.apiHandler = apiHandler;
   }
 
   async showMainDisplay() {
-    // render search bar and add button
     let mainTemplate = $('#search-and-add').html();
     let templateScript = Handlebars.compile(mainTemplate);
     $('main').html(templateScript());
@@ -39,5 +38,4 @@ export class Display {
     let html = context !== undefined ? templateScript(context) : templateScript();
     element.append(html);
   }
-
 }

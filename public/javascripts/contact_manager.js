@@ -49,24 +49,50 @@ export class Manager {
   }
 
   handleSubmitButton(contactId) {
-    $('form').on('submit', (event) => {
+    $('#submit').on('click', (event) => {
       event.preventDefault();
 
       let form = document.querySelector('form');
-      let formId = form.id;
       let formData = new FormData(form);
       let data = {};
 
       formData.forEach((k, v) => data[v] = k);
+    
+      // validation
+      if (this.validator.inputsValid(data)) {
+        let formId = form.id;
 
-      if (formId === "add-contact") {
-        this.apiHandler.addContact(data);
-      } else if (formId === "edit-contact") {
-        this.apiHandler.updateContact(contactId, data);
+        if (formId === "add-contact") {
+          this.apiHandler.addContact(data);
+        } else if (formId === "edit-contact") {
+          this.apiHandler.updateContact(contactId, data);
+        }
+
+        this.display.clearMainDisplay();
+        this.setupMainPage();
+      } else {
+
+        // if any input isn't valid
+          // iterate through first three inputs divs
+          // if valid input, display none for class validation-error  of next element sibling
+          // if invalid input, display inline for the same
+        
+          let divInputs = form.querySelectorAll('div input');
+
+          for (let i = 0; i < divInputs.length - 1; i ++) {
+            let divInput = divInputs[i];
+            let inputId = divInput.id;
+            let inputValue = divInput.value;
+
+            if (this.validator.isValidInput(inputId, inputValue)) {
+              divInput.nextElementSibling.style.display = "none";
+            } else {
+              divInput.nextElementSibling.style.display = "inline";
+            }
+          }
+
+          this.handleSubmitButton(contactId);
       }
-
-      this.display.clearMainDisplay();
-      this.setupMainPage();
     })
   }
   
