@@ -71,12 +71,6 @@ export class Manager {
         this.display.clearMainDisplay();
         this.setupMainPage();
       } else {
-
-        // if any input isn't valid
-          // iterate through first three inputs divs
-          // if valid input, display none for class validation-error  of next element sibling
-          // if invalid input, display inline for the same
-        
           let divInputs = form.querySelectorAll('div input');
 
           for (let i = 0; i < divInputs.length - 1; i ++) {

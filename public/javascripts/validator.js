@@ -1,8 +1,4 @@
 export class Validator {
-  constructor(display) {
-    this.display = display;
-  }
-
   isValidInput(inputId, input) {
     let regex;
     let result;

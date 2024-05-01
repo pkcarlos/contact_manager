@@ -35,9 +35,9 @@
     "id": 10
   },
   {
-    "full_name": "Christopher Valdemoro",
-    "phone_number": "3058785704",
-    "email": "",
+    "full_name": "Christopher Vlad",
+    "phone_number": "234-234-2345",
+    "email": "chris@example.com",
     "tags": "",
     "id": 11
   },
@@ -47,12 +47,5 @@
     "email": "nikk@email.com",
     "tags": "",
     "id": 12
-  },
-  {
-    "full_name": "Hannah X",
-    "phone_number": "444-444-4444",
-    "email": "hana@example.com",
-    "tags": "",
-    "id": 13
   }
 ]

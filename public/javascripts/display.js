@@ -1,5 +1,5 @@
 export class Display {
-  constructor(apiHandler, validator) {
+  constructor(apiHandler) {
     this.apiHandler = apiHandler;
   }
 

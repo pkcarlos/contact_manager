@@ -6,7 +6,7 @@ import { Validator } from './validator.js';
 document.addEventListener('DOMContentLoaded', () => {
   let apiHandler = new ApiHandler();
   let display = new Display(apiHandler);
-  let validator = new Validator(display);
+  let validator = new Validator();
 
   new Manager(display, apiHandler, validator);
 })
