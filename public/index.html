@@ -33,7 +33,11 @@
               {{full_name}}<br>
               Email: {{email}}<br>
               Phone: {{phone_number}}<br>
-              Tags: {{tags}}
+              <div class="tag-links">
+                Tags: {{#each tags}}
+                        <a href="#">#{{this}}</a>
+                      {{/each}}
+              </div>
             </div>
       
             <input type="button" value="Edit" class="edit">
@@ -65,13 +69,17 @@
           <div class="validation-error" ><i>(Must be in the format 999-999-9999)</i></div>
         </div>
 
-        <div>
-          <label for="tags">Tags:</label>
-          <input type="text" name="tags" id="tags">
+        <label for="tags">Tags:</label>
+        <div class="tags-input">
+          <ul id="tag-list"></ul>
+          <input type="text" name="tags" id="tags" placeholder="Enter tag name">
+          <div class="validation-error"><i>(Tag must be unique and nonempty)</i></div>
         </div>
       
-        <input type="submit" value="Submit" id="submit">
-        <input type="button" value ="Cancel" id="cancel">
+        <div>
+          <input type="submit" value="Submit" id="submit">
+          <input type="button" value ="Cancel" id="cancel">
+        </div>
       </form>
     </script>
 
@@ -96,13 +104,17 @@
           <div class="validation-error"><i>(Must be in the format 999-999-9999)</i></div>
         </div>
 
-        <div>
-          <label for="tags">Tags:</label>
-          <input type="text" name="tags" id="tags" value="{{tags}}">
+        <label for="tags">Tags:</label>
+        <div class="tags-input">
+          <ul id="tag-list"></ul>
+          <input type="text" name="tags" id="tags" placeholder="Enter tag name">
+          <div class="validation-error"><i>(Tag must be unique and nonempty)</i></div>
         </div>
       
-        <input type="submit" value="Submit" id="submit">
-        <input type="button" value ="Cancel" id="cancel">
+        <div>
+          <input type="submit" value="Submit" id="submit">
+          <input type="button" value ="Cancel" id="cancel">  
+        </div>
       </form>
     </script>
 

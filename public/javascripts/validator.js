@@ -23,4 +23,8 @@ export class Validator {
   inputsValid(inputs) {
    return Object.entries(inputs).slice(0, 3).every(pair => this.isValidInput(pair[0], pair[1]));
   }
+
+  uniqueTag(tagName, tagList) {
+    return !tagList.includes(tagName);
+  }
 }

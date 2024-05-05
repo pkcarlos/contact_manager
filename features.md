@@ -43,9 +43,13 @@ X Add Contact/Create Contact
     - there are no two contacts with the same name
     - each contact only has one phone number
 
-- Tagging
-  - create tag
-  - can select a tag to attach to contact; ea contact can have multiple tags
-  - clicking on tag shows all contacts with tag
-
 Also, implement a "tagging" feature, which allows you to create tags, such as "marketing," "sales," "engineering," and when you add/edit a contact, you can select a tag to attach to the contact. Finally, you can click on a tag and show all the contacts with that tag. The UI isn't too important here since the focus is on the functionality.
+
+- Tagging features
+  - can add/remove tag to contact on "Add Contact" and "Edit Contact" screens
+    - 
+  - when clicking tag on contacts page, populates all contacts with clicked tag
+
+  - create tag html/css
+
+

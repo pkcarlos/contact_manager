@@ -12,6 +12,7 @@ export class Manager {
     this.handleAddContactButton();
     this.handleEditButtons();
     this.handleDeleteButtons();
+    this.handleTagLinks();
   }
 
   async renderSearchFunction() {
@@ -27,6 +28,37 @@ export class Manager {
       })
   }
 
+  async handleTagLinks() {
+    let tagLinks = document.getElementsByClassName('tag-links');
+
+    for (let i = 0; i < tagLinks.length; i ++) {
+      let link = tagLinks[i];
+      
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        let tagName = event.target.textContent.slice(1).trim();
+        this.display.clearMainDisplay();
+        this.display.insertTemplate($('#search-and-add'), $('main'));
+        document.querySelector('main').innerHTML += '<h2>Tagged with: ' + `"${tagName}"` + '</h2>';
+
+        // get contacts that include "friend" as tag
+        this.apiHandler.getContacts()
+          .then(contacts => {
+            let contactInfo = contacts.filter(contact => {
+              let tags = contact.tags;
+              if (tags) {
+                return contact.tags.split(',').includes(tagName);
+              }
+            })
+
+            this.display.showContacts(contactInfo);
+        });
+
+      })
+    }
+  }
+
   handleAddContactButton() {
     $('#add-contact').on('click', (e) => {
       e.preventDefault();
@@ -38,7 +70,63 @@ export class Manager {
       this.display.insertTemplate(template, element);
       this.handleCancelButton();
       this.handleSubmitButton();
+      this.handleTagInputs();
     })
+  }
+
+  configureTags() {
+    let tags = [];
+    let tagList = document.getElementById('tag-list').children;
+
+    for (let i = 0; i < tagList.length; i ++) {
+      let tag = tagList[i];
+      tags.push(tag.textContent.slice(0, -1));
+    }
+
+    return tags.join(',');
+  }
+
+  handleTagInputs() {
+    $('#tags').on('keydown', (event) => {
+      let tagValue = event.target.value.trim();
+
+      if (event.key === 'Enter') {
+        event.preventDefault();
+
+        // tag validation
+        if (tagValue !== '' && this.validator.uniqueTag(tagValue, this.getTags())) {
+          this.display.addTag(tagValue);
+          event.target.value = '';
+          event.target.nextElementSibling.style.display = 'none';
+        } else {
+          event.target.nextElementSibling.style.display = 'inline';
+        }
+      }
+    })
+
+    $('#tag-list').on('click', (event) => {
+      event.preventDefault();
+
+      if (event.target.classList.contains('delete-button')) { /// replaced code below
+        event.target.parentNode.remove();
+      }
+      // let listItem = event.target.parentNode; /// why did this give me an error???
+      // listItem.parentNode.removeChild(listItem);
+    })
+  }
+
+  getTags() {
+    let tags = [];
+    let tagList = document.getElementById('tag-list').children;
+    
+    if (tags) {
+      for (let i = 0; i < tagList.length; i ++) {
+        let tag = tagList[i];
+        tags.push(tag.textContent.slice(0, -1));
+      }
+    }
+
+    return tags;
   }
 
   handleCancelButton() {
@@ -54,9 +142,11 @@ export class Manager {
 
       let form = document.querySelector('form');
       let formData = new FormData(form);
+      let tags = this.configureTags();
       let data = {};
 
       formData.forEach((k, v) => data[v] = k);
+      data.tags = tags;
     
       // validation
       if (this.validator.inputsValid(data)) {
@@ -73,7 +163,7 @@ export class Manager {
       } else {
           let divInputs = form.querySelectorAll('div input');
 
-          for (let i = 0; i < divInputs.length - 1; i ++) {
+          for (let i = 0; i < 3; i ++) {
             let divInput = divInputs[i];
             let inputId = divInput.id;
             let inputValue = divInput.value;
@@ -103,6 +193,7 @@ export class Manager {
           this.apiHandler.deleteContact(id);
         }
 
+        this.display.clearMainDisplay();
         this.setupMainPage();
       })
     }
@@ -118,12 +209,14 @@ export class Manager {
         let contactId = event.target.parentNode.dataset.contactId;
         
        this.apiHandler.getContact(contactId).then(response => {
-          let template = $("#edit-contact-template");
+          let template = $('#edit-contact-template');
           let element = $('main');
           let context = response;
 
           this.display.clearMainDisplay();
           this.display.insertTemplate(template, element, context);
+          this.display.showContactTags(contactId);
+          this.handleTagInputs();
           this.handleCancelButton();
           this.handleSubmitButton(contactId);
         })
@@ -131,3 +224,11 @@ export class Manager {
     }
   }
 }
+
+// bugs
+// pressing enter on add contact when cursor is in any input except tags submits form...right now, pressing ENTER while cursor is in any input deletes any tags already in the Tags section
+// contact deleted and contact added alerts showing up weird
+// clicking next to tags triggers link
+
+// lowercase all tags??
+
