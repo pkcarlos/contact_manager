@@ -11,7 +11,7 @@
     "full_name": "Victor Reyes",
     "email": "vpr@example.com",
     "phone_number": "123-123-1234",
-    "tags": "friend"
+    "tags": "friend,LS"
   },
   {
     "id": 3,
@@ -19,54 +19,5 @@
     "email": "ph@example.com",
     "phone_number": "123-123-4545",
     "tags": "work"
-  },
-  {
-    "full_name": "Charlie C",
-    "phone_number": "123-456-3456",
-    "email": "charlie@example.com",
-    "tags": "dad",
-    "id": 9
-  },
-  {
-    "full_name": "Hello Kitty",
-    "phone_number": "789-456-3456",
-    "email": "hello_kitty@hello.com",
-    "tags": "",
-    "id": 10
-  },
-  {
-    "full_name": "Christopher Valdemoro",
-    "phone_number": "234-234-2345",
-    "email": "chris@example.com",
-    "tags": "spouse",
-    "id": 11
-  },
-  {
-    "full_name": "Nikki C",
-    "phone_number": "567-345-2345",
-    "email": "nikk@email.com",
-    "tags": "sister",
-    "id": 12
-  },
-  {
-    "full_name": "Esther Kim",
-    "phone_number": "123-322-1234",
-    "email": "ekim@example.com",
-    "tags": "friend, LS",
-    "id": 13
-  },
-  {
-    "full_name": "Cruz H",
-    "phone_number": "123-123-1234",
-    "email": "cruz@email.com",
-    "tags": "friend,LS",
-    "id": 14
-  },
-  {
-    "full_name": "Kana M",
-    "phone_number": "123-123-1234",
-    "email": "kana@example.com",
-    "tags": "friend,LS,sister",
-    "id": 15
   }
 ]
