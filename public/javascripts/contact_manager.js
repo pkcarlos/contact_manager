@@ -29,7 +29,7 @@ export class Manager {
   }
 
   async handleTagLinks() {
-    let tagLinks = document.getElementsByClassName('tag-links');
+    let tagLinks = document.querySelectorAll('.tag-links A');
 
     for (let i = 0; i < tagLinks.length; i ++) {
       let link = tagLinks[i];
@@ -39,7 +39,6 @@ export class Manager {
 
         let tagName = event.target.textContent.slice(1).trim();
         this.display.clearMainDisplay();
-        this.display.insertTemplate($('#search-and-add'), $('main'));
         document.querySelector('main').innerHTML += '<h2>Tagged with: ' + `"${tagName}"` + '</h2>';
 
         // get contacts that include "friend" as tag
@@ -53,6 +52,9 @@ export class Manager {
             })
 
             this.display.showContacts(contactInfo);
+            this.handleTagLinks();
+            this.handleEditButtons();
+            this.handleDeleteButtons();
         });
 
       })
@@ -60,7 +62,7 @@ export class Manager {
   }
 
   handleAddContactButton() {
-    $('#add-contact').on('click', (e) => {
+    $('#add-contact-button').on('click', (e) => {
       e.preventDefault();
 
       let template = $('#create-contact-template');
@@ -68,9 +70,18 @@ export class Manager {
 
       this.display.clearMainDisplay();
       this.display.insertTemplate(template, element);
+      this.handleReturnButton();
       this.handleCancelButton();
       this.handleSubmitButton();
       this.handleTagInputs();
+    })
+  }
+
+  handleReturnButton() {
+    $('form').on('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
     })
   }
 
@@ -217,6 +228,7 @@ export class Manager {
           this.display.insertTemplate(template, element, context);
           this.display.showContactTags(contactId);
           this.handleTagInputs();
+          this.handleReturnButton();
           this.handleCancelButton();
           this.handleSubmitButton(contactId);
         })
@@ -226,9 +238,6 @@ export class Manager {
 }
 
 // bugs
-// pressing enter on add contact when cursor is in any input except tags submits form...right now, pressing ENTER while cursor is in any input deletes any tags already in the Tags section
-// contact deleted and contact added alerts showing up weird
-// clicking next to tags triggers link
 
-// lowercase all tags??
+// contact deleted and contact added alerts showing up weird
 

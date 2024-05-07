@@ -1,3 +1,63 @@
+/* Center the title and headings horizontally */
+header {
+  text-align: center;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+main {
+  text-align: center;
+}
+
+/* Each contact in its own container with border and shadowing */
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.contacts > div {
+  width: calc(25% - 20px); /* Adjust for the border and margin */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px #00000033;
+  padding: 10px;
+}
+
+/* Position h2 above the form in create and edit contact templates */
+#create-contact-template h2,
+#edit-contact-template h2 {
+  text-align: center;
+}
+
+/* Center form containers horizontally on the page */
+#add-contact,
+#edit-contact {
+  margin: 20px auto; /* Center horizontally */
+  width: 25%; /* Adjust width as needed */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+#add-contact,
+#edit-contact {
+  text-align: left;
+}
+
+/* Style form inputs */
+/* #add-contact input,
+#edit-contact input, */
+#add-contact textarea,
+#edit-contact textarea {
+  width: calc(100% - 20px); /* Adjust width to match container length */
+  margin-bottom: 10px; /* Add spacing between inputs */
+}
+
+/*  */
 .tags-input { 
   display: inline-block; 
   position: relative; 

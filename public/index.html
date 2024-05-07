@@ -21,7 +21,7 @@
     
     <script id="search-and-add" type="text/x-handlebars">
       <input type="text" id="search" name="search" placeholder="search" />
-      <input type="button" id="add-contact" value="Add Contact" />
+      <input type="button" id="add-contact-button" value="Add Contact" />
     </script>
     
     <script id="contact-display-template" type="text/x-handlebars">
@@ -30,11 +30,11 @@
         {{#each contacts}}
           <div data-contact-id="{{id}}">
             <div>
-              {{full_name}}<br>
-              Email: {{email}}<br>
-              Phone: {{phone_number}}<br>
+              <div id="name">{{full_name}}</div><br>
+              <b>Email:</b> {{email}}<br>
+              <b>Phone:</b> {{phone_number}}<br>
               <div class="tag-links">
-                Tags: {{#each tags}}
+                <b>Tags:</b> {{#each tags}}
                         <a href="#">#{{this}}</a>
                       {{/each}}
               </div>
@@ -59,7 +59,7 @@
         <div>
           <label for="email">Email:</label>
           <input type="text" name="email" id="email">
-          <div class="validation-error" ><i>(Must be a valid email)</i></div>
+          <div class="validation-error"><i>(Must be a valid email)</i></div>
 
         </div>
       
