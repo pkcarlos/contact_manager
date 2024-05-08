@@ -21,9 +21,12 @@ export class Manager {
         .then(response => {
           let allContacts = response;
           let input = $('#search').val().toLowerCase();
-          let searchResults = allContacts.filter(contact => contact.full_name.toLowerCase().startsWith(input));
+          let searchResults = allContacts.filter(contact => contact.full_name.toLowerCase().includes(input));
           this.display.clearContacts();
           this.display.showContacts(searchResults);
+          this.handleEditButtons();
+          this.handleDeleteButtons();
+          this.handleTagLinks();
         })
       })
   }
@@ -239,5 +242,10 @@ export class Manager {
 
 // bugs
 
-// contact deleted and contact added alerts showing up weird
+// be able to clear tags in adding or editing
+// be able to go back to main page
+// adding tags to create a contact not working
+  // It seems like adding tags when I create a contact isn't working. I tried adding a comma-separated list on a new contact and also a single tags, but when shown the main contacts the newly added one wouldn't have any tags. I also couldn't seem to add tags via editing a contact. Maybe I was doing something wrong.
+
+
 
