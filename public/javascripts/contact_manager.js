@@ -65,7 +65,7 @@ export class Manager {
   }
 
   clearTags() {
-    let html = '<input type="button" value="Clear Tags" id="clear-tags">';
+    let html = '<input type="button" value="All Contacts" id="clear-tags">';
     document.querySelector('main').innerHTML += html;
 
     $('#clear-tags').on('click', () => {
