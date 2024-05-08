@@ -249,14 +249,3 @@ export class Manager {
     }
   }
 }
-
-// bugs
-// Your search feature only worked for first names. I wasn't able to search via last names like I can in the demo app. Fixed!
-// Sometimes the 'delete' and 'edit' buttons didn't work. I'm not quite sure what's going on, but I was able to reliably reproduce this error by typing something in the search bar, erasing it, and then trying to click delete or edit. 🧐 Fixed!
-// be able to clear tags in adding or editing
-  // Ask and you shall receive! Functionality has been added :)
-// be able to go back to main page. Added
-// adding tags to create a contact not working
-  // It seems like adding tags when I create a contact isn't working. I tried adding a comma-separated list on a new contact and also a single tags, but when shown the main contacts the newly added one wouldn't have any tags. I also couldn't seem to add tags via editing a contact. Maybe I was doing something wrong.
-  
-  // I was unable to reproduce the error with adding tags when adding a new contact. This might be due to lack of instruction on my part. When adding tags, you'd need to type the tag name and hit ENTER to place the tag in a "pending" state before submitting the whole form. I've updaded the README to include this instruction. I've also added the ability to use a "comma" as if pressing the ENTER button when adding tags :)
